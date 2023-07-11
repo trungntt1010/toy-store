@@ -42,4 +42,22 @@ public class SourceController {
                 .data(res)
                 .build();
     }
+    @PutMapping("")
+    public Response<Source> updateProductSource(@RequestBody Source source) {
+        var res = productService.updateProductSource(source);
+        return Response.<Source>builder()
+                .code(200)
+                .message("Success")
+                .data(res)
+                .build();
+    }
+    @DeleteMapping("/{id}")
+    public Response<Boolean> deleteProductSource(@PathVariable int id) {
+        var res = productService.deleteProductSource(id);
+        return Response.<Boolean>builder()
+                .code(200)
+                .message("Success")
+                .data(res)
+                .build();
+    }
 }

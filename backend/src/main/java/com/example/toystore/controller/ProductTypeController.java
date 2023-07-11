@@ -43,4 +43,24 @@ public class ProductTypeController {
                 .data(res)
                 .build();
     }
+
+    @PutMapping("")
+    public Response<ProductType> updateProductType(@RequestBody ProductType type) {
+        var res = productService.updateProductType(type);
+        return Response.<ProductType>builder()
+                .code(200)
+                .message("Success")
+                .data(res)
+                .build();
+    }
+
+    @DeleteMapping("/{id}")
+    public Response<Boolean> deleteProductType(@PathVariable int id) {
+        var res = productService.deleteProductType(id);
+        return Response.<Boolean>builder()
+                .code(200)
+                .message("Success")
+                .data(res)
+                .build();
+    }
 }

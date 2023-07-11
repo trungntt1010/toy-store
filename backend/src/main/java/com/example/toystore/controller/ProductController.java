@@ -18,11 +18,11 @@ public class ProductController {
 
     @PostMapping("")
     public Response<Integer> createProduct(@RequestBody Product product){
-        productService.insertProduct(product);
+        var res =  productService.insertProduct(product);
         return Response.<Integer> builder()
                 .code(200)
                 .message("Success")
-                .data(1)
+                .data(res)
                 .build();
     }
 
@@ -40,6 +40,25 @@ public class ProductController {
     public Response<Product> getProductById(@PathVariable int id){
         var res = productService.getProductById(id);
         return Response.<Product> builder()
+                .code(200)
+                .message("Success")
+                .data(res)
+                .build();
+    }
+
+    @PutMapping("")
+    public Response<Product> updateProduct(@RequestBody Product product) {
+        var res = productService.updateProduct(product);
+        return Response.<Product>builder()
+                .code(200)
+                .message("Success")
+                .data(res)
+                .build();
+    }
+    @DeleteMapping("/{id}")
+    public Response<Boolean> deleteProduct(@PathVariable int id) {
+        var res = productService.deleteProduct(id);
+        return Response.<Boolean>builder()
                 .code(200)
                 .message("Success")
                 .data(res)

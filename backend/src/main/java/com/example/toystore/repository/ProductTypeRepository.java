@@ -68,4 +68,33 @@ public class ProductTypeRepository {
                     .executeAndFetch(ProductType.class);
         }
     }
+
+    public boolean updateProductType(ProductType type) {
+        try (Connection con = dataSource.open()) {
+            String stmt =
+                    """
+                            UPDATE product_types
+                            SET name = :name, status = :status, note = :note
+                            WHERE id = :id
+                    """;
+            return con.createQuery(stmt)
+                    .bind(type)
+                    .executeUpdate()
+                    .getResult() == 1;
+        }
+    }
+
+    public boolean deleteProductType(int id) {
+        try (Connection con = dataSource.open()) {
+            String stmt =
+                    """
+                            DELETE FROM product_types
+                            WHERE id = :id
+                    """;
+            return con.createQuery(stmt)
+                    .addParameter("id", id)
+                    .executeUpdate()
+                    .getResult() == 1;
+        }
+    }
 }

@@ -68,4 +68,33 @@ public class SourceRepository {
                     .executeAndFetch(Source.class);
         }
     }
+
+    public boolean updateProductSource(Source source) {
+        try (Connection con = dataSource.open()) {
+            String stmt =
+                    """
+                            UPDATE sources
+                            SET name = :name, status = :status, note = :note, phone = :phone, address = :address
+                            WHERE id = :id
+                    """;
+            return con.createQuery(stmt)
+                    .bind(source)
+                    .executeUpdate()
+                    .getResult() == 1;
+        }
+    }
+
+    public boolean deleteProductSource(int id) {
+        try (Connection con = dataSource.open()) {
+            String stmt =
+                    """
+                            DELETE FROM sources
+                            WHERE id = :id
+                    """;
+            return con.createQuery(stmt)
+                    .addParameter("id", id)
+                    .executeUpdate()
+                    .getResult() == 1;
+        }
+    }
 }

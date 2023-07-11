@@ -22,9 +22,6 @@ public class Product {
     private String note;
     private ProductType type;
     private Source source;
-
-    @JsonIgnore
     private int typeId;
-    @JsonIgnore
     private int sourceId;
 }

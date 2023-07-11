@@ -56,4 +56,33 @@ public class ProductRepository {
                     .executeAndFetchFirst(Product.class);
         }
     }
+
+    public boolean updateProduct(Product product) {
+        try (Connection con = dataSource.open()) {
+            String stmt =
+                    """
+                            UPDATE products
+                            SET name = :name, qty = :qty, thumbnail = :thumbnail, image = :image, price = :price, status = :status, note = :note, typeId = :typeId, sourceId = :sourceId
+                            WHERE id = :id
+                    """;
+            return con.createQuery(stmt)
+                    .bind(product)
+                    .executeUpdate()
+                    .getResult() == 1;
+        }
+    }
+
+    public boolean deleteProduct(int id) {
+        try (Connection con = dataSource.open()) {
+            String stmt =
+                    """
+                            DELETE FROM products
+                            WHERE id = :id
+                    """;
+            return con.createQuery(stmt)
+                    .addParameter("id", id)
+                    .executeUpdate()
+                    .getResult() == 1;
+        }
+    }
 }

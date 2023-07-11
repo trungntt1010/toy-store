@@ -87,4 +87,30 @@ public class ProductService {
                 .build()).toList();
     }
 
+    public Product updateProduct(Product product) {
+        productRepository.updateProduct(product);
+        return getProductById(product.getId());
+    }
+
+    public Source updateProductSource(Source source) {
+        sourceRepository.updateProductSource(source);
+        return getProductSourceById(source.getId());
+    }
+
+    public ProductType updateProductType(ProductType type) {
+        productTypeRepository.updateProductType(type);
+        return getProductTypeById(type.getId());
+    }
+
+    public Boolean deleteProductSource(int id) {
+       return sourceRepository.deleteProductSource(id);
+    }
+
+    public boolean deleteProduct(int id) {
+       return productRepository.deleteProduct(id);
+    }
+
+    public boolean deleteProductType(int id) {
+        return productTypeRepository.deleteProductType(id);
+    }
 }
