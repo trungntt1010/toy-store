@@ -12,7 +12,7 @@ import lombok.extern.jackson.Jacksonized;
 @AllArgsConstructor
 @Builder(toBuilder = true)
 public class Source {
-    private long id;
+    private int id;
     private String name;
     private String status;
     private String created;

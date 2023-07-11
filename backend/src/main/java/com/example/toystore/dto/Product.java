@@ -10,7 +10,7 @@ import lombok.extern.jackson.Jacksonized;
 @AllArgsConstructor
 @Builder(toBuilder = true)
 public class Product {
-    private long id;
+    private int id;
     private String name;
     private int qty;
     private String thumbnail;
@@ -24,7 +24,7 @@ public class Product {
     private Source source;
 
     @JsonIgnore
-    private long typeId;
+    private int typeId;
     @JsonIgnore
-    private long sourceId;
+    private int sourceId;
 }

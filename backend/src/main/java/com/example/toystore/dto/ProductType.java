@@ -12,7 +12,7 @@ import lombok.extern.jackson.Jacksonized;
 @AllArgsConstructor
 @Builder(toBuilder = true)
 public class ProductType {
-    private long id;
+    private int id;
     private String name;
     private String created;
     private String updated;
