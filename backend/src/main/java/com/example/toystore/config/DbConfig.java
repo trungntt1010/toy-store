@@ -1,6 +1,6 @@
-package com.example.demo.Config;
+package com.example.toystore.config;
 
-import com.example.demo.Common.LocalDateTimeConverter;
+import com.example.toystore.common.LocalDateTimeConverter;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +38,7 @@ public class DbConfig {
     private HikariConfig getHikariConfig() {
         HikariConfig hikariConfig = new HikariDataSource();
         hikariConfig.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        hikariConfig.setJdbcUrl("jdbc:mysql:localhost:3306/toy_store");
+        hikariConfig.setJdbcUrl("jdbc:mysql://localhost:3306/toy_store");
         hikariConfig.setUsername("root");
         hikariConfig.setPassword("MyNewPass");
         hikariConfig.setMaximumPoolSize(10);

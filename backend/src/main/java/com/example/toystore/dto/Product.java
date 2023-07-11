@@ -1,5 +1,6 @@
-package com.example.demo.DTO;
+package com.example.toystore.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import lombok.extern.jackson.Jacksonized;
 
@@ -15,12 +16,15 @@ public class Product {
     private String thumbnail;
     private String image;
     private int price;
-    private String source;
     private String created;
-    private String update;
+    private String updated;
     private String status;
     private String note;
-    private long typeId;
-    private long sourceId;
+    private ProductType type;
+    private Source source;
 
+    @JsonIgnore
+    private long typeId;
+    @JsonIgnore
+    private long sourceId;
 }

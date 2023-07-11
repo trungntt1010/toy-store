@@ -1,4 +1,4 @@
-package com.example.demo.Common;
+package com.example.toystore.common;
 
 
 import org.sql2o.converters.Converter;

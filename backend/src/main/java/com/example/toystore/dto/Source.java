@@ -1,4 +1,4 @@
-package com.example.demo.DTO;
+package com.example.toystore.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,11 +11,13 @@ import lombok.extern.jackson.Jacksonized;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder(toBuilder = true)
-public class ProductType {
+public class Source {
     private long id;
     private String name;
-    private String created;
-    private String update;
     private String status;
+    private String created;
+    private String updated;
+    private String address;
+    private String phone;
     private String note;
 }
